@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /law.html
+
+Sitemap: https://beadspark.net/sitemap.xml
