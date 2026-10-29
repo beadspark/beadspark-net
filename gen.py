@@ -202,8 +202,8 @@ home = f"""
     <img src="images/full/Ac101-sannpu.jpg" alt="農業用ドローンによる散布作業" loading="lazy" width="1400" height="789">
     <span class="drone__txt">
       <span class="eyebrow">もうひとつの仕事</span>
-      <span class="drone__h">太陽光発電設備の赤外線ドローン点検と、<br>農業ドローン散布。</span>
-      <span class="drone__more">ドローン事業について →</span>
+      <span class="drone__h">農業ドローン散布。<br>点検事業は株式会社KENZAKI DRへ。</span>
+      <span class="drone__more">ドローン事業と法人化のお知らせ →</span>
     </span>
   </a>
 </section>
@@ -418,7 +418,7 @@ law = """
   <table class="spec spec--wide"><tbody>
     <tr><th>販売業者</th><td>beadspark</td></tr>
     <tr><th>運営責任者</th><td>検崎 雄二</td></tr>
-    <tr><th>所在地</th><td>〒814-0022<br>福岡県福岡市早良区原3-8-30-507</td></tr>
+    <tr><th>所在地</th><td>〒814-0012<br>福岡県福岡市早良区昭代3-10-27</td></tr>
     <tr><th>電話番号</th><td><a href="tel:09074419440">090-7441-9440</a><br><small>受付時間：平日 10:00〜17:00<br>点検・散布の作業中は出られないことがあります。メールでもご連絡いただけます。</small></td></tr>
     <tr><th>メールアドレス</th><td>info@beadspark.net</td></tr>
     <tr><th>販売価格</th><td>各商品ページに表示された金額（消費税込）</td></tr>
@@ -439,13 +439,22 @@ drone = """
 <section class="lead">
   <p class="eyebrow">ドローン事業</p>
   <h1>太陽光発電設備の<br>赤外線点検と、<br>農業ドローン散布。</h1>
-  <p class="lead__p">beadsparkは福岡市早良区を拠点に、ドローンを使った赤外線点検と農薬散布を行っています。点検データの解析ソフトウェア「IR Works AI」も自社で開発しています。</p>
+  <p class="lead__p">beadsparkは福岡市早良区を拠点に、農業用ドローンによる農薬散布を行っています。赤外線ドローン点検と解析ソフトウェア「IR Works AI」などの新しいご依頼は、株式会社KENZAKI DRで承ります。</p>
 </section>
 <section class="prose">
+  <h2>ドローン点検事業の法人化について</h2>
+  <p>ドローン点検を中心とする事業を法人化し、<b>株式会社KENZAKI DR</b>（2026年11月設立予定・現在設立準備中）に移すことになりました。</p>
+  <ul>
+    <li>赤外線ドローン点検・空撮・ドローン講習・IRシリーズの新規のご依頼は、株式会社KENZAKI DR（<a href="https://kenzaki-dr.jp/">kenzaki-dr.jp</a>／info@kenzaki-dr.jp）で承ります。</li>
+    <li>現在beadsparkとご契約いただいている業務は、契約の名義・内容・請求書の発行元・お振込先を変えずに、beadsparkのまま最後までお引き受けします。お手続きは必要ありません。</li>
+    <li>農薬散布の請負とアンティークビーズの販売は、これまでどおりbeadsparkで承ります。</li>
+    <li>担当はこれまでと同じ検崎です。お電話とメールの連絡先も、そのままお使いいただけます。</li>
+  </ul>
+
   <figure class="shot"><img src="images/full/tenken_mv2.jpg" alt="点検に使用するドローン" loading="lazy" width="1400" height="787"></figure>
 
   <h2>太陽光発電設備のドローン点検</h2>
-  <p>赤外線カメラを搭載したドローンでアレイ全面を撮影し、ホットスポット、クラスタ故障、ストリング異常を検出します。電気的診断と組み合わせた原因の切り分けにも対応します。低圧からメガソーラーまで、O&amp;M事業者様からの外注もお受けしています。</p>
+  <p>赤外線カメラを搭載したドローンでアレイ全面を撮影し、ホットスポット、クラスタ故障、ストリング異常を検出します。電気的診断と組み合わせた原因の切り分けにも対応します。低圧からメガソーラーまで、O&amp;M事業者様からの外注もお受けしています。<br><small>新規のご依頼は株式会社KENZAKI DRで承ります。</small></p>
 
   <figure class="shot"><img src="images/full/Ac101-sannpu.jpg" alt="農業用ドローンによる散布作業" loading="lazy" width="1400" height="789"></figure>
 
@@ -453,14 +462,15 @@ drone = """
   <p>水稲を中心に、防除・追肥の散布作業を請け負います。圃場の状況に応じて散布計画を立て、繁忙期も機体とバッテリーの運用体制を整えて対応しています。</p>
 
   <h2>IR Works AI</h2>
-  <p>ドローンで撮影した赤外線画像から異常発熱箇所を抽出し、点検報告書の作成までを支援する自社開発ソフトウェアです。点検現場の実作業をそのまま設計に落とし込んでいます。</p>
+  <p>ドローンで撮影した赤外線画像から異常発熱箇所を抽出し、点検報告書の作成までを支援するソフトウェアです。点検現場の実作業をそのまま設計に落とし込んでいます。株式会社KENZAKI DRが開発・提供します。</p>
 
-  <p class="prose__cta"><a class="btn" href="contact.html">ドローン事業について問い合わせる</a></p>
+  <p class="prose__cta"><a class="btn" href="https://kenzaki-dr.jp/">点検のご依頼（株式会社KENZAKI DR）</a></p>
+  <p class="prose__cta"><a class="btn" href="contact.html">散布について問い合わせる</a></p>
 </section>
 """
 open(f'{ROOT}/drone.html', 'w').write(page(
     'ドローン事業｜太陽光発電設備の赤外線点検・農業散布｜beadspark',
-    '福岡市早良区。太陽光発電設備の赤外線ドローン点検、農業用ドローンによる散布作業、赤外線解析ソフトIR Works AIの開発。', drone))
+    '福岡市早良区。農業用ドローンによる散布作業の請負。赤外線ドローン点検とIR Works AIの新規のご依頼は株式会社KENZAKI DRで承ります。', drone))
 
 contact = f"""
 <section class="lead">
@@ -477,7 +487,8 @@ contact = f"""
   <p>すべて一点ものです。掲載中でも売り切れている場合がありますので、在庫の確認だけのお問い合わせもお気軽にどうぞ。</p>
 
   <h2>ドローン事業についてお問い合わせの場合</h2>
-  <p>設備の<b>所在地・規模（kW）・ご希望の時期</b>をお知らせいただけると、お返事がスムーズです。散布のご依頼は、圃場の面積と作物をお書きください。</p>
+  <p>散布のご依頼は、<b>圃場の面積と作物</b>をお書きください。</p>
+  <p>赤外線ドローン点検・空撮・ドローン講習・IRシリーズの新しいご依頼は、株式会社KENZAKI DR（<a href="https://kenzaki-dr.jp/">kenzaki-dr.jp</a>／info@kenzaki-dr.jp）で承ります。設備の<b>所在地・規模（kW）・ご希望の時期</b>をお知らせください。現在ご契約中の業務は、これまでどおりこちらのアドレスで承ります。</p>
 
   <p class="legalnote">散布の繁忙期はお返事にお時間をいただく場合があります。</p>
 </section>

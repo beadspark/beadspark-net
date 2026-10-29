@@ -37,7 +37,7 @@ sitemap.xml / robots.txt
 確認コマンド:
 
 ```bash
-grep -rl '9440\|検崎\|原3-8-30' . --include=*.html
+grep -rl '9440\|検崎\|昭代3-10-27' . --include=*.html
 # → law.html のみが出れば正常
 ```
 
@@ -56,7 +56,7 @@ Settings → Domains に `beadspark.net` / `www.beadspark.net` を追加してDN
 ## 公開前の確認
 
 - `info@beadspark.net` が実際に受信できるか（全90点の注文ボタンがこの宛先）
-- 郵便番号 814-0022 が正しいか（推定で入れています）
+- 郵便番号 814-0012（昭代）を日本郵便のデータで確認済み
 - 価格の端数（28,009円など。ShopServeの税処理の名残）
 
 ## 画像フォルダについて
