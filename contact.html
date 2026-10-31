@@ -34,7 +34,7 @@
   <p class="lead__p">ビーズのご注文・ご質問、ドローン点検や散布のご相談は、こちらまでお送りください。2営業日以内にお返事します。</p>
 </section>
 <section class="prose">
-  <p class="prose__cta"><a class="btn" href="mailto:info@beadspark.net">info@beadspark.net</a></p>
+  <p class="prose__cta"><a class="btn js-mail" href="#" data-u="info" data-d="beadspark.net" data-show>info［at］beadspark.net</a></p>
   <p class="legalnote">お問い合わせはメールにて承っております。<br>散布の繁忙期はお返事にお時間をいただく場合があります。</p>
 
   <h2>ビーズについてお問い合わせの場合</h2>
@@ -43,7 +43,7 @@
 
   <h2>ドローン事業についてお問い合わせの場合</h2>
   <p>散布のご依頼は、<b>圃場の面積と作物</b>をお書きください。</p>
-  <p>赤外線ドローン点検・空撮・ドローン講習・IRシリーズの新しいご依頼は、株式会社KENZAKI DR（<a href="https://kenzaki-dr.jp/">kenzaki-dr.jp</a>／info@kenzaki-dr.jp）で承ります。設備の<b>所在地・規模（kW）・ご希望の時期</b>をお知らせください。現在ご契約中の業務は、これまでどおりこちらのアドレスで承ります。</p>
+  <p>赤外線ドローン点検・空撮・ドローン講習・IRシリーズの新しいご依頼は、株式会社KENZAKI DR（<a href="https://kenzaki-dr.jp/">kenzaki-dr.jp</a>／<a class="js-mail" href="#" data-u="info" data-d="kenzaki-dr.jp" data-show>info［at］kenzaki-dr.jp</a>）で承ります。設備の<b>所在地・規模（kW）・ご希望の時期</b>をお知らせください。現在ご契約中の業務は、これまでどおりこちらのアドレスで承ります。</p>
 
   <p class="legalnote">散布の繁忙期はお返事にお時間をいただく場合があります。</p>
 </section>
@@ -60,5 +60,6 @@
   </nav>
   <p class="ft__note">アンティークビーズには、作られた土地と時代があります。<br>&copy; 2026 beadspark ／ 福岡市早良区</p>
 </footer>
+<script>document.querySelectorAll('.js-mail').forEach(function(a){var m=a.dataset.u+'@'+a.dataset.d;a.href='mailto:'+m+(a.dataset.q?'?'+a.dataset.q:'');if(a.hasAttribute('data-show'))a.textContent=m;});</script>
 </body>
 </html>

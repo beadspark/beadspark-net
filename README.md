@@ -22,13 +22,15 @@ sitemap.xml / robots.txt
 
 ## 個人情報の扱い（重要）
 
-氏名・住所・電話番号は **law.html にのみ** 記載しています。以下の対策を入れています。
+氏名・住所は **law.html にのみ** 記載しています。電話番号はどのページにも載せていません（特商法表記は「ご請求があれば遅滞なく開示」の書き方）。以下の対策を入れています。
 
 - `law.html` に `noindex, nofollow, noarchive, nosnippet` を指定（検索結果に出さない）
 - `sitemap.xml` から law.html を除外
 - `robots.txt` で `Disallow: /law.html`
-- 電話番号を `tel:` リンクにしない（自動収集とワンタップ発信を防ぐ）
-- 電話番号をspanで分割（単純な正規表現による抜き出しを外す）
+- 電話番号は掲載しない
+- メールアドレスをHTMLにそのまま書かない。`gen.py` の `mail_link()` で `info［at］beadspark.net` と表示し、
+  各ページ末尾のJSが `data-u` / `data-d`（/ `data-q`）から mailto を組み立てる（自動収集対策）。
+  注文ボタンもこの方式で、JSが無効な環境では contact.html に飛ぶ
 - フッターと他ページには一切載せない
 
 **HTMLを直接編集する際は、この情報を他のページに書き足さないでください。**
@@ -37,8 +39,10 @@ sitemap.xml / robots.txt
 確認コマンド:
 
 ```bash
-grep -rl '9440\|検崎\|昭代3-10-27' . --include=*.html
+grep -rl '検崎\|昭代3-10-27' . --include=*.html
 # → law.html のみが出れば正常
+grep -rlE '9440|@beadspark\.net|@kenzaki-dr\.jp|tel:' . --include=*.html
+# → 何も出なければ正常
 ```
 
 ## 公開手順
@@ -110,9 +114,10 @@ gen.py が data-beads.json から全96ページを生成します。
 
 守ること:
 - HTMLを直接編集しない。gen.py のテンプレートを直して再生成する
-- 氏名・住所・電話番号は law.html 以外に絶対に出さない。
+- 氏名・住所は law.html 以外に絶対に出さない。電話番号はどこにも載せない。
   フッターや共通テンプレートへの追記は禁止。
-  作業後に `grep -rl '9440' . --include=*.html` で law.html のみか確認すること
+- メールアドレスは mail_link() 経由のみ。HTMLに生のアドレスや mailto: を書かない。
+  作業後に `grep -rlE '9440|@beadspark\.net|@kenzaki-dr\.jp|tel:' . --include=*.html` で何も出ないか確認すること
 - 色とフォントは assets/site.css の :root 変数経由のみ。生のhexを増やさない
   (--ground/--patina/--gold/--cinnabar/--ivory 系、--f-lat/--f-jp/--f-ui)
 - 年代の古い順に並べる構成がこのサイトの背骨。並び順の意味を壊さない

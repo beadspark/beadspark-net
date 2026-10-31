@@ -100,6 +100,7 @@ def page(title, desc, body, rel='', extra_head='', body_class=''):
   </nav>
   <p class="ft__note">アンティークビーズには、作られた土地と時代があります。<br>&copy; 2026 beadspark ／ 福岡市早良区</p>
 </footer>
+<script>document.querySelectorAll('.js-mail').forEach(function(a){{var m=a.dataset.u+'@'+a.dataset.d;a.href='mailto:'+m+(a.dataset.q?'?'+a.dataset.q:'');if(a.hasAttribute('data-show'))a.textContent=m;}});</script>
 </body>
 </html>
 """
@@ -278,6 +279,11 @@ open(f'{ROOT}/beads/index.html', 'w').write(page(
 
 # ══ 商品詳細 ════════════════════════════════════════════
 MAIL = 'info@beadspark.net'
+# メールアドレスはHTMLにそのまま書かない（自動収集対策）。page() 末尾のJSで mailto に組み立てる
+def mail_link(addr, cls=''):
+    u, d = addr.split('@')
+    c = f'{cls} js-mail'.strip()
+    return f'<a class="{c}" href="#" data-u="{u}" data-d="{d}" data-show>{u}［at］{d}</a>'
 for idx, it in enumerate(ITEMS):
     prev_, next_ = ITEMS[idx-1] if idx else None, ITEMS[idx+1] if idx+1 < len(ITEMS) else None
     imgs = it['images']
@@ -299,7 +305,7 @@ for idx, it in enumerate(ITEMS):
              "--------\r\nお名前：\r\nご住所：\r\nお電話番号：\r\nご質問など：\r\n--------\r\n\r\n"
              "※一点もののため、在庫を確認のうえ2営業日以内にお返事いたします。\r\n"
              "※お支払いは銀行振込のみです。在庫がある場合、あわせて振込先と送料をご案内いたします。")
-    mailto = f"mailto:{MAIL}?subject={quote(subj)}&amp;body={quote(body_)}"
+    mq = f"subject={quote(subj)}&amp;body={quote(body_)}"
 
     if it['status'] == 'sold':
         buybox = ('<p class="item__price item__price--sold">売り切れました</p>'
@@ -310,7 +316,7 @@ for idx, it in enumerate(ITEMS):
                   '<a class="btn btn--ghost" href="index.html">ほかの一点を見る</a>')
     else:
         buybox = (f'<p class="item__price">&yen;{yen(it["price"])}<small>税込</small></p>'
-                  f'<a class="btn" href="{mailto}">在庫を確認して注文する</a>'
+                  f'<a class="btn js-mail" href="../contact.html" data-u="info" data-d="beadspark.net" data-q="{mq}">在庫を確認して注文する</a>'
                   '<div class="item__pay">'
                   '<p><b>すべて一点ものです。</b>行き違いですでに売り切れている場合があります。'
                   'ご注文をいただいたあとに在庫を確認し、2営業日以内にお返事いたします。</p>'
@@ -409,7 +415,7 @@ guide = """
 open(f'{ROOT}/guide.html', 'w').write(page(
     'お買い物について｜beadspark', 'ご注文の流れ、お支払い（銀行振込のみ）、配送、返品についてご案内します。', guide))
 
-law = """
+law = f"""
 <section class="lead">
   <p class="eyebrow">Legal</p>
   <h1>特定商取引法に<br>基づく表記</h1>
@@ -419,8 +425,8 @@ law = """
     <tr><th>販売業者</th><td>beadspark</td></tr>
     <tr><th>運営責任者</th><td>検崎 雄二</td></tr>
     <tr><th>所在地</th><td>〒814-0012<br>福岡県福岡市早良区昭代3-10-27</td></tr>
-    <tr><th>電話番号</th><td><a href="tel:09074419440">090-7441-9440</a><br><small>受付時間：平日 10:00〜17:00<br>点検・散布の作業中は出られないことがあります。メールでもご連絡いただけます。</small></td></tr>
-    <tr><th>メールアドレス</th><td>info@beadspark.net</td></tr>
+    <tr><th>電話番号</th><td>ご請求があれば遅滞なく開示いたします。<br><small>メールにてご請求ください。お問い合わせはメールで承っております。</small></td></tr>
+    <tr><th>メールアドレス</th><td>{mail_link(MAIL)}</td></tr>
     <tr><th>販売価格</th><td>各商品ページに表示された金額（消費税込）</td></tr>
     <tr><th>商品代金以外の必要料金</th><td>送料、振込手数料</td></tr>
     <tr><th>お支払い方法</th><td>銀行振込のみ</td></tr>
@@ -435,7 +441,7 @@ LAW_HEAD = '<meta name="robots" content="noindex, nofollow, noarchive, nosnippet
 open(f'{ROOT}/law.html', 'w').write(page(
     '特定商取引法に基づく表記｜beadspark', 'beadsparkの特定商取引法に基づく表記です。', law, extra_head=LAW_HEAD))
 
-drone = """
+drone = f"""
 <section class="lead">
   <p class="eyebrow">ドローン事業</p>
   <h1>太陽光発電設備の<br>赤外線点検と、<br>農業ドローン散布。</h1>
@@ -445,10 +451,10 @@ drone = """
   <h2>ドローン点検事業の法人化について</h2>
   <p>ドローン点検を中心とする事業を法人化し、<b>株式会社KENZAKI DR</b>（2026年11月設立予定・現在設立準備中）に移すことになりました。</p>
   <ul>
-    <li>赤外線ドローン点検・空撮・ドローン講習・IRシリーズの新規のご依頼は、株式会社KENZAKI DR（<a href="https://kenzaki-dr.jp/">kenzaki-dr.jp</a>／info@kenzaki-dr.jp）で承ります。</li>
+    <li>赤外線ドローン点検・空撮・ドローン講習・IRシリーズの新規のご依頼は、株式会社KENZAKI DR（<a href="https://kenzaki-dr.jp/">kenzaki-dr.jp</a>／{mail_link('info@kenzaki-dr.jp')}）で承ります。</li>
     <li>現在beadsparkとご契約いただいている業務は、契約の名義・内容・請求書の発行元・お振込先を変えずに、beadsparkのまま最後までお引き受けします。お手続きは必要ありません。</li>
     <li>農薬散布の請負とアンティークビーズの販売は、これまでどおりbeadsparkで承ります。</li>
-    <li>担当はこれまでと同じ検崎です。お電話とメールの連絡先も、そのままお使いいただけます。</li>
+    <li>担当はこれまでと同じ検崎です。メールの連絡先も、そのままお使いいただけます。</li>
   </ul>
 
   <figure class="shot"><img src="images/full/tenken_mv2.jpg" alt="点検に使用するドローン" loading="lazy" width="1400" height="787"></figure>
@@ -479,7 +485,7 @@ contact = f"""
   <p class="lead__p">ビーズのご注文・ご質問、ドローン点検や散布のご相談は、こちらまでお送りください。2営業日以内にお返事します。</p>
 </section>
 <section class="prose">
-  <p class="prose__cta"><a class="btn" href="mailto:{MAIL}">{MAIL}</a></p>
+  <p class="prose__cta">{mail_link(MAIL, 'btn')}</p>
   <p class="legalnote">お問い合わせはメールにて承っております。<br>散布の繁忙期はお返事にお時間をいただく場合があります。</p>
 
   <h2>ビーズについてお問い合わせの場合</h2>
@@ -488,7 +494,7 @@ contact = f"""
 
   <h2>ドローン事業についてお問い合わせの場合</h2>
   <p>散布のご依頼は、<b>圃場の面積と作物</b>をお書きください。</p>
-  <p>赤外線ドローン点検・空撮・ドローン講習・IRシリーズの新しいご依頼は、株式会社KENZAKI DR（<a href="https://kenzaki-dr.jp/">kenzaki-dr.jp</a>／info@kenzaki-dr.jp）で承ります。設備の<b>所在地・規模（kW）・ご希望の時期</b>をお知らせください。現在ご契約中の業務は、これまでどおりこちらのアドレスで承ります。</p>
+  <p>赤外線ドローン点検・空撮・ドローン講習・IRシリーズの新しいご依頼は、株式会社KENZAKI DR（<a href="https://kenzaki-dr.jp/">kenzaki-dr.jp</a>／{mail_link('info@kenzaki-dr.jp')}）で承ります。設備の<b>所在地・規模（kW）・ご希望の時期</b>をお知らせください。現在ご契約中の業務は、これまでどおりこちらのアドレスで承ります。</p>
 
   <p class="legalnote">散布の繁忙期はお返事にお時間をいただく場合があります。</p>
 </section>
